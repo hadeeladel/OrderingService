@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "Ordering.Server.Protos.Clients";
+
+package payments;
+
+service PaymentsProcessor{
+  rpc ProcessOrder (stream OrderInformation) returns (ResponseMessage);
+}
+message OrderInformation {
+  int32 userId = 1;
+  Products products=2;
+}
+
+message Products{
+	int32 productId=1;
+	int32 qantity=2;
+}
+message ResponseMessage {
+  bool status = 1;
+  string details = 2;
+}

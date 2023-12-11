@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package inventory;
+
+option csharp_namespace = "Inventory.Servicee.Protos";
+
+service InventoryManager{
+	rpc GetItemsFromInventory (stream OrderMessage) returns (PaymentResponceMessage);
+}
+
+message PaymentResponceMessage{
+	bool status=1;
+	string details=2;
+}
+
+message OrderMessage{
+
+	int32 itemId=1;
+	int32 quantity=2;
+	int32 userid=3;
+
+}
